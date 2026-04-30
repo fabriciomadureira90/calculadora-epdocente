@@ -34,7 +34,7 @@
                     <tbody>
                         <!-- Linha 1 -->
                         <tr class="border-b border-gray-200 hover:bg-gray-50">
-                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Chefia Imediata</td>
+                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Chefia Imediata*</td>
                             <td class="p-1 border-r border-gray-200">
                                 <input type="number" id="inp-chefia" min="0" max="95" placeholder="0" title="A nota deve ser de 0 a 95" class="w-full p-1.5 text-center font-bold text-base border-2 border-blue-500 bg-blue-50 text-blue-900 rounded-md shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-600 focus:bg-white hover:bg-blue-100 transition-all">
                             </td>
@@ -44,7 +44,7 @@
 
                         <!-- Linha 2 -->
                         <tr class="border-b border-gray-200 hover:bg-gray-50">
-                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Autoavaliação</td>
+                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Autoavaliação*</td>
                             <td class="p-1 border-r border-gray-200">
                                 <input type="number" id="inp-auto" min="0" max="95" placeholder="0" title="A nota deve ser de 0 a 95" class="w-full p-1.5 text-center font-bold text-base border-2 border-blue-500 bg-blue-50 text-blue-900 rounded-md shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-600 focus:bg-white hover:bg-blue-100 transition-all">
                             </td>
@@ -54,7 +54,7 @@
 
                         <!-- Linha 3 -->
                         <tr class="border-b border-gray-200 hover:bg-gray-50">
-                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Pares (Comissão Avaliadora)</td>
+                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Pares (Comissão Avaliadora)**</td>
                             <td class="p-1 border-r border-gray-200">
                                 <input type="number" id="inp-pares" min="0" max="95" placeholder="0" title="A nota deve ser de 0 a 95" class="w-full p-1.5 text-center font-bold text-base border-2 border-blue-500 bg-blue-50 text-blue-900 rounded-md shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-600 focus:bg-white hover:bg-blue-100 transition-all">
                             </td>
@@ -64,7 +64,7 @@
 
                         <!-- Linha 4 -->
                         <tr class="border-b border-gray-300 hover:bg-gray-50">
-                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Avaliação Discente</td>
+                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Avaliação Discente***</td>
                             <td class="p-1 border-r border-gray-200">
                                 <input type="number" id="inp-discente" min="0" max="5" placeholder="0" title="A nota deve ser de 0 a 5" class="w-full p-1.5 text-center font-bold text-base border-2 border-blue-500 bg-blue-50 text-blue-900 rounded-md shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-600 focus:bg-white hover:bg-blue-100 transition-all">
                             </td>
@@ -84,6 +84,13 @@
                     </tbody>
                 </table>
             </div>
+        </div>
+
+        <!-- Observações / Notas de Rodapé -->
+        <div class="bg-gray-100 p-5 rounded-xl border border-gray-200 text-xs text-gray-600 space-y-3 shadow-sm">
+            <p><strong class="text-gray-800">*</strong> Para a Chefia Imediata e a Autoavaliação: a nota corresponde à soma dos valores atribuídos em cada um dos itens dos formulários.</p>
+            <p><strong class="text-gray-800">**</strong> Para os Pares: a nota da avaliação dos pares será a média aritmética das notas atribuídas pelos membros da Comissão Avaliadora, sendo que a nota fracionada deverá ser arredondada para o primeiro número inteiro subsequente.</p>
+            <p><strong class="text-gray-800">***</strong> Para a Avaliação Discente: a nota corresponde àquela incluída no processo pela Chefia Imediata, em documento próprio, limitada a, no máximo, 5 (cinco) pontos e será somada à nota final apurada.</p>
         </div>
 
         <!-- Alerta de Conceito Obtido -->
@@ -138,6 +145,7 @@
                 </table>
             </div>
         </div>
+
     </div>
 
     <script>
