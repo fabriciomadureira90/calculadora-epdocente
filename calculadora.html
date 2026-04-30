@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Notas UFMG</title>
+    <!-- Carrega a biblioteca de estilos Tailwind direto do navegador -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-50 py-8 px-4 sm:px-6 lg:px-8 font-sans text-gray-800">
+
+    <div class="max-w-4xl mx-auto space-y-8">
+        
+        <!-- Cabeçalho -->
+        <div class="text-center space-y-2">
+            <h1 class="text-3xl font-bold text-gray-900 uppercase tracking-wide">
+                Consolidação da Nota do Ciclo
+            </h1>
+            <p class="text-gray-500">Ferramenta de cálculo para consolidação da nota do ciclo de Avaliação de Estágio Probatório Docente - Decreto nº 12.374/2025</p>
+        </div>
+
+        <!-- Calculadora (Tabela Principal) -->
+        <div class="bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200">
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-left text-gray-700">
+                    <thead class="bg-gray-100 text-gray-900 uppercase text-center border-b border-gray-300">
+                        <tr>
+                            <th class="px-4 py-3 border-r border-gray-300 w-2/5">Avaliação</th>
+                            <th class="px-4 py-3 border-r border-gray-300 w-1/5">Nota Atribuída</th>
+                            <th class="px-4 py-3 border-r border-gray-300 w-1/5">Percentual</th>
+                            <th class="px-4 py-3 w-1/5">Nota Final</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Linha 1 -->
+                        <tr class="border-b border-gray-200 hover:bg-gray-50">
+                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Chefia Imediata</td>
+                            <td class="p-1 border-r border-gray-200">
+                                <input type="number" id="inp-chefia" min="0" max="95" placeholder="0" title="A nota deve ser de 0 a 95" class="w-full p-1.5 text-center font-bold text-base border-2 border-blue-500 bg-blue-50 text-blue-900 rounded-md shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-600 focus:bg-white hover:bg-blue-100 transition-all">
+                            </td>
+                            <td class="px-4 py-3 border-r border-gray-200 text-center">60%</td>
+                            <td id="out-chefia" class="px-4 py-3 text-center font-semibold text-gray-900 bg-gray-50">0</td>
+                        </tr>
+
+                        <!-- Linha 2 -->
+                        <tr class="border-b border-gray-200 hover:bg-gray-50">
+                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Autoavaliação</td>
+                            <td class="p-1 border-r border-gray-200">
+                                <input type="number" id="inp-auto" min="0" max="95" placeholder="0" title="A nota deve ser de 0 a 95" class="w-full p-1.5 text-center font-bold text-base border-2 border-blue-500 bg-blue-50 text-blue-900 rounded-md shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-600 focus:bg-white hover:bg-blue-100 transition-all">
+                            </td>
+                            <td class="px-4 py-3 border-r border-gray-200 text-center">15%</td>
+                            <td id="out-auto" class="px-4 py-3 text-center font-semibold text-gray-900 bg-gray-50">0</td>
+                        </tr>
+
+                        <!-- Linha 3 -->
+                        <tr class="border-b border-gray-200 hover:bg-gray-50">
+                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Pares (Comissão Avaliadora)</td>
+                            <td class="p-1 border-r border-gray-200">
+                                <input type="number" id="inp-pares" min="0" max="95" placeholder="0" title="A nota deve ser de 0 a 95" class="w-full p-1.5 text-center font-bold text-base border-2 border-blue-500 bg-blue-50 text-blue-900 rounded-md shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-600 focus:bg-white hover:bg-blue-100 transition-all">
+                            </td>
+                            <td class="px-4 py-3 border-r border-gray-200 text-center">25%</td>
+                            <td id="out-pares" class="px-4 py-3 text-center font-semibold text-gray-900 bg-gray-50">0</td>
+                        </tr>
+
+                        <!-- Linha 4 -->
+                        <tr class="border-b border-gray-300 hover:bg-gray-50">
+                            <td class="px-4 py-3 border-r border-gray-200 font-medium">Avaliação Discente</td>
+                            <td class="p-1 border-r border-gray-200">
+                                <input type="number" id="inp-discente" min="0" max="5" placeholder="0" title="A nota deve ser de 0 a 5" class="w-full p-1.5 text-center font-bold text-base border-2 border-blue-500 bg-blue-50 text-blue-900 rounded-md shadow-inner focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-blue-600 focus:bg-white hover:bg-blue-100 transition-all">
+                            </td>
+                            <td class="px-4 py-3 border-r border-gray-200 text-center font-bold">-</td>
+                            <td id="out-discente" class="px-4 py-3 text-center font-semibold text-gray-900 bg-gray-50">0</td>
+                        </tr>
+
+                        <!-- Linha TOTAL -->
+                        <tr class="bg-gray-100">
+                            <td colspan="3" class="px-4 py-4 border-r border-gray-300 font-bold uppercase text-right">
+                                Pontuação Total Obtida (Soma das Notas Finais Apuradas)
+                            </td>
+                            <td id="out-total" class="px-4 py-4 text-center font-bold text-xl text-gray-900 bg-blue-50">
+                                0
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Alerta de Conceito Obtido -->
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
+            <span class="text-lg font-bold uppercase text-gray-700">Conceito Obtido no Ciclo:</span>
+            <div id="conceito-box" class="px-8 py-3 rounded-md shadow-inner text-xl font-bold uppercase tracking-wider transition-colors duration-300 bg-gray-200 text-gray-600">
+                Aguardando notas
+            </div>
+        </div>
+
+        <!-- Tabela de Referência -->
+        <div class="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200">
+            <div class="bg-gray-100 px-4 py-3 border-b border-gray-200">
+                <h2 class="text-center font-bold text-gray-800 uppercase">Tabela de Referência de Conceitos</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full text-sm text-center text-gray-800">
+                    <thead class="bg-gray-50 border-b border-gray-200">
+                        <tr>
+                            <th class="px-4 py-2 border-r border-gray-200 w-1/4">Nota</th>
+                            <th class="px-4 py-2 border-r border-gray-200 w-1/2">Descrição</th>
+                            <th class="px-4 py-2 w-1/4">Conceito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-[#43a047] text-white border-b border-green-800/20">
+                            <td class="px-4 py-3 border-r border-green-800/20 font-bold">96 a 100</td>
+                            <td class="px-4 py-3 border-r border-green-800/20">Desempenho muito acima das expectativas.</td>
+                            <td class="px-4 py-3 font-bold">Excepcional</td>
+                        </tr>
+                        <tr class="bg-[#81c784] text-gray-900 border-b border-green-800/20">
+                            <td class="px-4 py-3 border-r border-green-800/20 font-bold">91 a 95</td>
+                            <td class="px-4 py-3 border-r border-green-800/20">Desempenho acima do esperado.</td>
+                            <td class="px-4 py-3 font-bold">Alto Desempenho</td>
+                        </tr>
+                        <tr class="bg-[#c8e6c9] text-gray-900 border-b border-gray-300">
+                            <td class="px-4 py-3 border-r border-gray-300 font-bold">80 a 90</td>
+                            <td class="px-4 py-3 border-r border-gray-300">Desempenho conforme o esperado.</td>
+                            <td class="px-4 py-3 font-bold">Adequado</td>
+                        </tr>
+                        <tr class="bg-[#ef5350] text-white border-b border-red-800/20">
+                            <td class="px-4 py-3 border-r border-red-800/20 font-bold">51 a 79</td>
+                            <td class="px-4 py-3 border-r border-red-800/20">Desempenho abaixo do esperado com contribuições limitadas e necessidade de melhorias substanciais.</td>
+                            <td class="px-4 py-3 font-bold">Inadequado</td>
+                        </tr>
+                        <tr class="bg-[#b71c1c] text-white">
+                            <td class="px-4 py-3 border-r border-red-800/20 font-bold">Até 50</td>
+                            <td class="px-4 py-3 border-r border-red-800/20">Desempenho muito abaixo do esperado.</td>
+                            <td class="px-4 py-3 font-bold">Insuficiente</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Função para garantir que teremos sempre um número
+        const parseNum = (val) => {
+            const num = parseFloat(val);
+            return isNaN(num) ? 0 : num;
+        };
+
+        // Formatador para o padrão brasileiro
+        const formatNumber = (num) => {
+            return num.toLocaleString('pt-BR', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+        };
+
+        // Referências aos inputs
+        const inputs = [
+            document.getElementById('inp-chefia'),
+            document.getElementById('inp-auto'),
+            document.getElementById('inp-pares'),
+            document.getElementById('inp-discente')
+        ];
+
+        // Lógica de cálculo que executa sempre que um valor for digitado
+        function calcularNotas() {
+            let chefia = parseNum(document.getElementById('inp-chefia').value);
+            let auto = parseNum(document.getElementById('inp-auto').value);
+            let pares = parseNum(document.getElementById('inp-pares').value);
+            let discente = parseNum(document.getElementById('inp-discente').value);
+
+            // Regras de limite: Impede o usuário de digitar números acima do permitido
+            if (chefia > 95) {
+                chefia = 95;
+                document.getElementById('inp-chefia').value = 95;
+            }
+            if (auto > 95) {
+                auto = 95;
+                document.getElementById('inp-auto').value = 95;
+            }
+            if (pares > 95) {
+                pares = 95;
+                document.getElementById('inp-pares').value = 95;
+            }
+            if (discente > 5) {
+                discente = 5;
+                document.getElementById('inp-discente').value = 5;
+            }
+
+            const notaChefia = chefia * 0.60;
+            const notaAuto = auto * 0.15;
+            const notaPares = pares * 0.25;
+            const notaDiscente = discente;
+
+            const total = notaChefia + notaAuto + notaPares + notaDiscente;
+
+            // Atualiza os textos nas tabelas
+            document.getElementById('out-chefia').innerText = formatNumber(notaChefia);
+            document.getElementById('out-auto').innerText = formatNumber(notaAuto);
+            document.getElementById('out-pares').innerText = formatNumber(notaPares);
+            document.getElementById('out-discente').innerText = formatNumber(notaDiscente);
+            document.getElementById('out-total').innerText = formatNumber(total);
+
+            // Calcula o conceito e atualiza a caixa de cores
+            atualizarConceito(total);
+        }
+
+        function atualizarConceito(total) {
+            const caixa = document.getElementById('conceito-box');
+            const notaArredondada = Math.round(total);
+
+            // Verifica se algum dos campos ainda está vazio
+            const chefiaVazio = document.getElementById('inp-chefia').value === "";
+            const autoVazio = document.getElementById('inp-auto').value === "";
+            const paresVazio = document.getElementById('inp-pares').value === "";
+            const discenteVazio = document.getElementById('inp-discente').value === "";
+            const aguardando = chefiaVazio || autoVazio || paresVazio || discenteVazio;
+
+            // Limpa todas as classes de cor anteriores
+            caixa.className = "px-8 py-3 rounded-md shadow-inner text-xl font-bold uppercase tracking-wider transition-colors duration-300";
+
+            if (aguardando) {
+                caixa.classList.add("bg-gray-200", "text-gray-600");
+                caixa.innerText = "Aguardando notas";
+                return;
+            }
+
+            if (notaArredondada >= 96) {
+                caixa.classList.add("bg-[#43a047]", "text-white");
+                caixa.innerText = "Excepcional";
+            } else if (notaArredondada >= 91) {
+                caixa.classList.add("bg-[#81c784]", "text-gray-900");
+                caixa.innerText = "Alto Desempenho";
+            } else if (notaArredondada >= 80) {
+                caixa.classList.add("bg-[#c8e6c9]", "text-gray-900");
+                caixa.innerText = "Adequado";
+            } else if (notaArredondada >= 51) {
+                caixa.classList.add("bg-[#ef5350]", "text-white");
+                caixa.innerText = "Inadequado";
+            } else {
+                caixa.classList.add("bg-[#b71c1c]", "text-white");
+                caixa.innerText = "Insuficiente";
+            }
+        }
+
+        // Adiciona um "ouvinte" em cada campo para calcular enquanto a pessoa digita
+        inputs.forEach(input => {
+            input.addEventListener('input', calcularNotas);
+        });
+    </script>
+</body>
+</html>
